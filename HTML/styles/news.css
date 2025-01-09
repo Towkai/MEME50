@@ -1,0 +1,82 @@
+* {
+}
+body {  
+  background-color: darkgray;
+  /* background-image: url(https://truth.bahamut.com.tw/artwork/202412/50c9d30cd5623ae1a9154f58e7769b0e.GIF); */
+  background-size: 250px;
+}
+.chocolate-classical-sans-regular, #title {
+  font-family: "Audiowide", "Chocolate Classical Sans", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.lxgw-wenkai-mono-tc-light, .caption {
+  font-family: "LXGW WenKai Mono TC", serif;
+  font-weight: 300;
+  font-style: normal;
+}
+.lxgw-wenkai-mono-tc-regular, #content {
+  font-family: "LXGW WenKai Mono TC", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.lxgw-wenkai-mono-tc-bold {
+  font-family: "Audiowide", "LXGW WenKai Mono TC", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+.Utility {
+  font-family: "Work Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.media {
+  width: 80%;
+}
+.tomorin {
+  color: red;
+}
+.caption a {
+  text-decoration: none;
+}
+.caption a:visited {
+  color: black
+}
+.caption a:hover {
+  color: darkblue
+}
+.caption a:active {
+  color: darkred
+}
+.news::after{
+  text-decoration: none;
+  content: "📰";
+}
+#TopButton{
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-content: center;      
+  flex-wrap: wrap;
+  background-color: white;
+  border-radius: 50%;
+  right: 20px;
+  bottom: 20px;
+  width: 50px;
+  height: 50px;
+  text-decoration: none;
+}
+.TopButton::before{
+  content: "🔼";
+}
+.Utility{
+  font-family: "Work Sans", serif;
+  color: #000;
+  background-color: white;
+}
+
+.TrackRightButton{
+  transform: translate(0, var(--track-right-button-y));
+}
