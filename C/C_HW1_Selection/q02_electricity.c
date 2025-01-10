@@ -20,7 +20,7 @@ void main() {
 	float business_less1500 = 3.44;
 	float business_over1500 = 5.05;
 	
-	int business_type = 0;
+	int is_business = 0;
 	
 	float consum = 0;
 	float electricity = 0;
@@ -29,15 +29,10 @@ void main() {
 	
 	printf("電力公司使用累計方式來計算電費，分非營業用電及營業用電。\n");
 	printf("是否為營業用電(Y/N)：");
-    int input;
-	setchar(&input);
+    
+	is_business = is_input_t();
 	
-	if (input == 89 || input == 121)
-		business_type = 1;
-	else
-		business_type = 0;
-	
-	printf("設定%s\n", (business_type > 0 ? "營業用電" : "非營業用電"));
+	printf("設定%s\n", (is_business > 0 ? "營業用電" : "非營業用電"));
 	printf("輸入用電度數：");
 	scanf("%f", &consum);
 	
@@ -47,7 +42,7 @@ void main() {
 	}
 	else
 	{
-		if (business_type > 0)
+		if (is_business > 0)
 		{
 			// 營業用電
 			if (consum <= 330)

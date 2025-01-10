@@ -8,10 +8,13 @@
 */
 
 void main() {
-	double price_lv[2][6] = {{1.63, 2.1, 2.89, 3.94, 4.6, 5.03}, {2.12, 2.91, 3.44, 5.05}};
+	// double price_lv[2][6] = {{{1.63, 2.1, 2.89, 3.94, 4.6, 5.03}, {2.12, 2.91, 3.44, 5.05}};
+	//[是否為商業用][是否為夏月][電費]
+	double price_lv[2][2][6] = {{{1.63, 2.1, 2.89, 3.94, 4.6, 5.03}, { 1.63, 2.38, 3.52, 4.8, 5.66, 6.41}}, {{2.12, 2.91, 3.44, 5.05}, {2.53, 3.55, 4.25, 6.43}}};
 	int limit_lv[2][7] = {{0, 120, 330, 500, 700, 1000, INT_MAX}, {0, 330, 700, 1500, INT_MAX, 0, 0}};
 	
-	int business_type = 0;
+	int is_business = 0;
+	int is_summer = 0;
 	
 	double consum = 0;
 	double electricity = 0;
@@ -20,15 +23,13 @@ void main() {
 	
 	printf("電力公司使用累計方式來計算電費，分非營業用電及營業用電。\n");
 	printf("是否為營業用電(Y/N)：");
-	int input;
-    setchar(&input); // 傳址給DEFINE設定輸入的字元
+	is_business = is_input_t();
+	printf("設定%s\n用電", (is_business > 0 ? "營業" : "非營業"));
+
+	printf("是否為夏月用電(Y/N)：");
+	is_summer = is_input_t();
+	printf("設定%s\n用電", (is_summer > 0 ? "夏月" : "非夏月"));
 	
-	if (input == 89 || input == 121)
-		business_type = 1;
-	else
-		business_type = 0;
-	
-	printf("設定%s\n", (business_type > 0 ? "營業用電" : "非營業用電"));
 	printf("輸入用電度數：");
 	scanf("%lf", &consum);
 	
@@ -38,17 +39,17 @@ void main() {
 		int i = 0; //度數的閾值
 		while (c < consum)
 		{
-			if (c < limit_lv[business_type][i + 1])
+			if (c < limit_lv[is_business][i + 1])
 			{
-				electricity += price_lv[business_type][i];
+				electricity += price_lv[is_business][is_summer][i];
 				c++;
 			}
-            else
-            {
-                i++; // 進入下一個閾值
-            }
+			else
+			{
+				i++; // 進入下一個閾值
+			}
 		}
-		printf("所繳電費(非夏月)：%g\n", electricity);
+		printf("所繳電費(%s%s用電)：%g\n", (is_summer > 0 ? "夏月" : "非夏月"), (is_business > 0 ? "營業" : "非營業"),  electricity);
 	}
 	else
 	{
