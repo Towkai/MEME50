@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include"myarr.h"
 
 /*
 輸入在某商店購物應付金額與實付金額。
@@ -7,9 +8,6 @@
 實付金額大於應付金額，則輸出找回金額最少的鈔票數和錢幣數。
 假設幣值只有 1000, 500, 100 元紙鈔和 50, 10, 5, 1 元硬幣。
 */
-int ArrayLength(int *arr) {
-    return sizeof(&arr) / sizeof(&arr[0]);
-}
 
 void main()
 {
@@ -22,7 +20,7 @@ void main()
 	{
 		int change = real - need;
     	printf("應找%d元\n", change);
-		for (int i = 0; i < sizeof(coin[0]) / sizeof(coin[0][0]); i++)
+		for (int i = 0; i < LENGTH(coin[0]); i++)
 		{
 			if (change > coin[0][i])
 			{

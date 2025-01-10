@@ -1,0 +1,1 @@
+#define LENGTH(X) (sizeof(X)/sizeof(X[0])) //只能用在宣告當下，經傳遞後失效

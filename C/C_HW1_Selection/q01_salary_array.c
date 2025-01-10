@@ -1,5 +1,6 @@
 #include<stdio.h>
-#include <limits.h>
+#include<limits.h>
+#include"myarr.h"
 
 /*
 1. 選擇性敘述的練習-salary
@@ -40,7 +41,7 @@ void main() {
         printf("一階加班費：%g\n", slary[1]);
         printf("二階加班費：%g\n", slary[2]);
         int sum = 0;
-        for (int i = 0; i < sizeof(slary) / sizeof((slary)[0]); i++)
+        for (int i = 0; i < LENGTH(slary); i++)
             sum += slary[i];
         printf("小計：%d\n", sum);
 
