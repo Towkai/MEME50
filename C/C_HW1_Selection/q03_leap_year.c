@@ -8,6 +8,7 @@
 
 void main() {
 	int year = 0;
+	printf("輸入一西元年，如 2015。判斷此年份是否為閏年。\n");	
 	printf("輸入西元年：");	
 	scanf("%d", &year);
 	

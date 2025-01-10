@@ -16,7 +16,7 @@ void main() {
 		return;
 	}
 
-    printf("%gx^2 + %gx + %g = 0，其根為：\n", a, b, c);
+    printf("(%gx^2) + (%gx) + (%g) = 0，其根為：\n", a, b, c);
     
     float b2_4ac = b * b - 4 * a * c;
 

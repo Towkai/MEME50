@@ -20,7 +20,8 @@ void main() {
 	int slary = 0;
 	
 	
-	printf("輸入工作時數：");
+	printf("60 小時以內，時薪 150 元。\n61~80 小時，以時薪 1.25 倍計算。\n81 小時以上，以時薪 1.5 倍計算。\n");
+    printf("輸入工作時數：");
 	scanf("%f", &hour);
 //	printf("hour = %.1f", hour);
 

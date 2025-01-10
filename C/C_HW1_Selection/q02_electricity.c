@@ -26,6 +26,7 @@ void main() {
 	
 	
 	
+	printf("電力公司使用累計方式來計算電費，分非營業用電及營業用電。\n");
 	printf("是否為營業用電(Y/N)：");
     business_type = getchar();
 	getchar();
@@ -36,7 +37,7 @@ void main() {
 		business_type = 0;
 	
 	printf("設定%s\n", (business_type > 0 ? "營業用電" : "非營業用電"));
-	printf("輸入用電度數(非夏月)：");
+	printf("輸入用電度數：");
 	scanf("%f", &consum);
 	
 	if (consum < 0)
@@ -121,5 +122,5 @@ void main() {
 			}
 		}
 	}
-	printf("所繳電費：%g\n", electricity);
+	printf("所繳電費(非夏月)：%g\n", electricity);
 }  
