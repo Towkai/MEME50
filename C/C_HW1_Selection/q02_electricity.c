@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include"input.h"
 
 /*
 電力公司使用累計方式來計算電費，分非營業用電及營業用電。
@@ -28,10 +29,10 @@ void main() {
 	
 	printf("電力公司使用累計方式來計算電費，分非營業用電及營業用電。\n");
 	printf("是否為營業用電(Y/N)：");
-    business_type = getchar();
-	getchar();
+    int input;
+	setchar(&input);
 	
-	if (business_type == 89 || business_type == 121)
+	if (input == 89 || input == 121)
 		business_type = 1;
 	else
 		business_type = 0;
