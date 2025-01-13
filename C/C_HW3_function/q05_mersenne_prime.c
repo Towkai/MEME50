@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<math.h>
-#include"myfunc.h"
+#include"../myheaders/myfunc.h"
 
 
 /*

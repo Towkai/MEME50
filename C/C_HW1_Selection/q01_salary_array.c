@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<limits.h>
-#include"myarr.h"
+#include"../myheaders/myarr.h"
 
 /*
 1. 選擇性敘述的練習-salary

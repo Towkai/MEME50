@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<math.h>
+#include"../myheaders/myarr.h"
 
 /*
 一個數字若等於其所有因數的總和，則此數為 perfect number。
@@ -42,7 +43,7 @@ int factor_sum(int n)
                 counter++;
             }
         }
-        for (int i = 0; i < sizeof(factor) / sizeof(factor[0]); i++)    //將每個因數相加
+        for (int i = 0; i < LENGTH(factor); i++)    //將每個因數相加
         {   
             if (factor[i] != 0)
                 factor_sum += factor[i];

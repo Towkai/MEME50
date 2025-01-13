@@ -1,5 +1,5 @@
 #include<stdio.h>
-#include"input.h"
+#include"../myheaders/myinput.h"
 
 /*
 電力公司使用累計方式來計算電費，分非營業用電及營業用電。

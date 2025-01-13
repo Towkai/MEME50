@@ -1,4 +1,4 @@
-int factorial(int x)
+int factorial(int x) //計算皆乘
 {
     int result = 1;
     for (int i = 1; i <= x; i++)
@@ -7,7 +7,7 @@ int factorial(int x)
     }
     return result;
 }
-int power(int x, int n)
+int power(int x, int n) //計算x^n
 {
     if (n == 0)
         return 1;
@@ -16,7 +16,7 @@ int power(int x, int n)
         result *= x;
     return result;
 }
-int is_prime(int x)
+int is_prime(int x) //檢查是否為質數
 {
     if (x > 0)
     {

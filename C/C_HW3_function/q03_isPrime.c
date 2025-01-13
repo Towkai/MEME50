@@ -1,5 +1,5 @@
 #include<stdio.h>
-#include"myfunc.h"
+#include"../myheaders/myfunc.h"
 
 
 /*

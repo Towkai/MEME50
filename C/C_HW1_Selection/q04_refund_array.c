@@ -1,5 +1,5 @@
 #include<stdio.h>
-#include"myarr.h"
+#include"../myheaders/myarr.h"
 
 /*
 輸入在某商店購物應付金額與實付金額。
