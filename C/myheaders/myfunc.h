@@ -1,3 +1,8 @@
+#define FALSE (0);
+#define TRUE (1);
+#define BOOLEAN(X) (X == 0 ? "FALSE" : "TRUE")
+
+
 int factorial(int x) //計算皆乘
 {
     int result = 1;
@@ -37,4 +42,13 @@ int is_prime(int x) //檢查是否為質數
         printf("invalid\n");
         return 0;
     }
+}
+
+int get_number_of_digit(int n, int x) //回傳 n 的第 x 位數，個位數為0
+{
+    int _10x = 1;
+    for (int i = 0; i < x ; i++)
+        _10x *= 10;
+    n %= _10x * 10;
+    return n / _10x;
 }

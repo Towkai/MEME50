@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<math.h>
+#include"../myheaders/myfunc.h"
 
 /*
 輸入一正整數，找出所有小於或等於的質數。
@@ -34,7 +35,7 @@ int bool_prime(int n)
     for (int i = 2; i <= root; i++)
     {
         if (n % i == 0)
-            return 0;
+            return FALSE;
     }
-    return 1;
+    return TRUE;
 }

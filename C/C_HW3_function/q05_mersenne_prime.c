@@ -13,9 +13,9 @@ int isMersennePrime(int x)
 {
     double l = log2(x + 1);
     if (l == (int)l) //判斷是某為整數
-        return 1;
+    {   return TRUE;    }
     else
-        return 0;
+        return FALSE;
 }
 
 void main()
