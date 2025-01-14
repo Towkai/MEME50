@@ -12,10 +12,7 @@ Mersenne 質數。(3, 7, 31, 127, 8191, 131071)
 int isMersennePrime(int x)
 {
     double l = log2(x + 1);
-    if (l == (int)l) //判斷是某為整數
-    {   return TRUE;    }
-    else
-        return FALSE;
+    return l == (int)l ? TRUE : FALSE;
 }
 
 void main()
