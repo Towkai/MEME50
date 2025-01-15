@@ -37,10 +37,11 @@ function generate_form()
     intput_param = {
         id: "input_date",
         label: "日期：",
-        type: "date",
+        type: "text",
         // tip: "(1.不可留白 2.至少兩個字以上 3.必須全部為中文字)",
         tip: ["格式:西元年/月/日(yyyy/mm/dd)"],
         onfocusout: "check_inputfield('input_date')",
+        onchange: "check_date()"
     }
     let input_date = create_inputfield(intput_param);
 
@@ -63,6 +64,7 @@ function create_inputfield(intput_param)
     inputfield.setAttribute("type", intput_param.type);
     inputfield.setAttribute("oninput", intput_param.oninput);
     inputfield.setAttribute("onfocusout", intput_param.onfocusout);
+    inputfield.setAttribute("onchange", intput_param.onchange);
     label.appendChild(inputfield);
     
     let result_symbols = document.createElement('span');
@@ -111,11 +113,6 @@ function check_inputfield(id)
     console.log("check_inputfield: "+(id) + ", value: " + input_field.value);
     if (input_field.value.length == 0)
         input_result(id, false, ["不可留白"]);
-    else
-    {
-        if (id == "input_date")
-            input_result(id, true, []);
-    }
 }
 
 function check_username()
@@ -172,9 +169,29 @@ function check_password()
 function check_date()
 {
     let check_date = document.getElementById("input_date");
-    console.log("check_date, value: " + check_date.value);
-    if (isPass)
-        input_result("input_password", isPass, messages);
+    let value = check_date.value;
+    let date = new Date(value).toLocaleDateString();
+    console.log("check_date, value: " + date);
+    let isPass = true;
+    if (date != "Invalid Date" && value.includes('/'))
+    {
+        let value_split = value.split('/');
+        let date_split = value.split('/');
+        for (let i = 0; i < value_split.length; i++)
+        {
+            if (value_split[i] != date_split[i])
+            {
+                isPass = false;
+                input_result("input_date", false, ["請輸入正確日期"]);
+            }
+        }
+        input_result("input_date", true, []);
+    }
+    else
+    {
+        isPass = false;
+        input_result("input_date", false, ["請照正確格式輸入"]);
+    }
 }
 
 function include_1to9(string)
