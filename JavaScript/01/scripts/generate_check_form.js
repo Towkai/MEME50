@@ -132,7 +132,7 @@ function check_username()
     
     for(var i = 0; i < value.length; i++) 
     {
-        if(value.charCodeAt(i) < 0x4E00 || value.charCodeAt(i) > 0x9FA5) {
+        if(value.charCodeAt(i) < 0x4E00 || value.charCodeAt(i) > 0x9FFF) {
             isPass = false;
             messages.push("輸入非中文，請重新輸入"); 
             break;
@@ -153,10 +153,15 @@ function check_password()
     if (value.length < 6)
         console.log("至少六個字以上"); 
     
-    if (!(include_1to9(value) && include_Atoz(value)))
+    if (!include_Atoz(value))
     {
         isPass = false;
-        messages.push("必須包含英數字元");
+        messages.push("必須包含英文字元");
+    }
+    if (!include_1to9(value))
+    {
+        isPass = false;
+        messages.push("必須包含數字字元");
     }
     if (!include_specialsymbol(value))
     {
