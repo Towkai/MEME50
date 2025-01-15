@@ -16,15 +16,15 @@ function generate_table()
     
     for (let i = 1; i <= 9; i++)
     {
-        let td = document.createElement('td');
-        td.setAttribute("style", "border: 5px solid DodgerBlue;")
+        let th = document.createElement('th');
+        th.setAttribute("style", "border: 5px solid DodgerBlue;")
         for (let j = 1; j <= 9; j++)
         {
             tr = document.createElement('tr');
             tr.textContent = `${i} * ${j} = ${i * j}`;
-            td.appendChild(tr);
+            th.appendChild(tr);
         }
-        tbody.appendChild(td);
+        tbody.appendChild(th);
     }
     document.body.appendChild(table);
 }
