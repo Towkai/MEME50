@@ -1,13 +1,13 @@
 window.addEventListener("load", (event) => {
-    generate_table();
+    generate_multiplication_table();
   });
 
-function generate_table()
+function generate_multiplication_table()
 {
     let table = document.createElement('table');
     // table.setAttribute("border", "1");
     table.setAttribute("bgcolor", "Aqua");
-    table.setAttribute("style", "color:red;border-style:ridge;border: 5px solid DodgerBlue;border-collapse: collapse;text-align:left;width:max-content")
+    table.setAttribute("style", "color:red;border-style:ridge;border: 5px solid DodgerBlue;border-collapse: collapse;text-align:left;width:max-content;")
     let title = document.createElement('caption');
     title.setAttribute("style", "color:black");
     title.textContent = "九九乘法表";
