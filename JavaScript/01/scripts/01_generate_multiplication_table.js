@@ -8,11 +8,11 @@ function generate_multiplication_table()
     // table.setAttribute("border", "1");
     table.setAttribute("bgcolor", "Aqua");
     table.setAttribute("style", "color:red;border-style:ridge;border: 5px solid DodgerBlue;border-collapse: collapse;text-align:left;width:max-content;")
-    let title = document.createElement('caption');
-    title.setAttribute("style", "color:black");
-    title.textContent = "九九乘法表";
+    let caption = document.createElement('caption');
+    caption.setAttribute("style", "color:black");
+    caption.textContent = "九九乘法表";
     let tbody = document.createElement('tbody');
-    table.appendChild(title);
+    table.appendChild(caption);
     table.appendChild(tbody);
     
     for (let i = 1; i <= 9; i++)
