@@ -61,7 +61,7 @@ function create_table()
 {
     let table = document.createElement("table");
     table.setAttribute("border", 1);
-    table.setAttribute("style", "display: inline-table;border-collapse: collapse;margin-right: 50px;");
+    table.setAttribute("style", "display: inline-table;border-collapse: collapse;margin-right: 50px;border-color: Blue;");
     return table;
 }
 
