@@ -1,4 +1,4 @@
-const star_url = "./images/chngstar.gif"
+const star_url = "https://raw.githubusercontent.com/Towkai/MEME50/refs/heads/main/JavaScript/03/images/chngstar.gif"
 const star_box = [];
 const star_status = [];
 const result = {
