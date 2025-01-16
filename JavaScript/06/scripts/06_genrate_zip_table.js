@@ -1,7 +1,25 @@
 window.addEventListener("load", (event) => {
-    generate_zip_table_1();
-    // generate_zip_table_2();
+    generate_title();
+    generate_container();
   });
+
+function generate_container()
+{
+    let div = document.createElement("div");
+    div.setAttribute("style","display: flex;")
+    // let table = generate_zip_table_1();
+    let table = generate_zip_table_2();
+    div.appendChild(table);
+    document.body.appendChild(div);
+}
+
+function generate_title()
+{
+    let h1 = document.createElement("h1");
+    h1.textContent = "台灣行政區郵遞區號";
+    document.body.appendChild(h1);
+    return h1;
+}
 
 function generate_zip_table_1()
 {
@@ -28,8 +46,7 @@ function generate_zip_table_1()
 
         table.appendChild(tr);
     }
-    
-    document.body.appendChild(table);
+    return table;
 }
   
 function generate_zip_table_2()
@@ -40,21 +57,26 @@ function generate_zip_table_2()
     {
         let tr = document.createElement("tr");
         let th = generate_table_cell("th", county.name);
+        th.setAttribute("rowspan", county.districts.length);
         tr.appendChild(th);
 
-        table.appendChild(tr);
-        for (let district of county.districts)
+        for (let i = 0; i < county.districts.length; i++)
         {
-            let zip_row = document.createElement("tr");
-            let zip = generate_table_cell("td", district.zip);
-            let township = generate_table_cell("td", district.name);
-            zip_row.appendChild(zip);
-            zip_row.appendChild(township);
+            if (i > 0)
+                tr = document.createElement("tr");
+            let zip_row = create_zip_row(tr, county.districts[i].zip, county.districts[i].name)
             table.appendChild(zip_row);
         }
     }
-    
-    document.body.appendChild(table);
+    return table;
+}
+function create_zip_row(tr, zip, name)
+{
+    let zip_cell = generate_table_cell("td", zip);
+    let township_cell = generate_table_cell("td", name);
+    tr.appendChild(zip_cell);
+    tr.appendChild(township_cell);    
+    return tr;
 }
 
 function create_table()
