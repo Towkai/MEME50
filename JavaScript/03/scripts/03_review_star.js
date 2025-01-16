@@ -2,7 +2,14 @@ const star_url = "https://raw.githubusercontent.com/Towkai/MEME50/refs/heads/mai
 const star_box = [];
 const star_status = [];
 const result = {
+    title: "單擊星星可評分，雙擊星星重置",
+    text:"您尚未評分",
     default: "您尚未評分",
+}
+
+function str_review_result(num)
+{
+    return `評分為....${num}`;
 }
 
 window.addEventListener("load", (event) => {
@@ -37,7 +44,7 @@ function generate_description()
 {
     let p = document.createElement("p");
     let i = document.createElement("i");
-    i.textContent = "單擊星星可評分，雙擊星星重置";
+    i.textContent = result.title;
     p.appendChild(i);
     document.body.appendChild(p);
 }
@@ -63,11 +70,11 @@ function addlistener(node)
             node.addEventListener(event, listener[event]);
 }
 
-
 function on_star_onclick(e) //滑鼠單點
 {
     let clicked_index = star_box.indexOf(e.target);
-    document.getElementById("result").textContent = `評分為....${clicked_index + 1}`;
+    result.text = str_review_result(clicked_index + 1);
+    document.getElementById("result").textContent = result.text;
     for(let i = 0; i < star_box.length; i++)
     {
         star_status[i] = i <= clicked_index ? 0 : 1;
@@ -77,6 +84,7 @@ function on_star_onclick(e) //滑鼠單點
 
 function on_star_ondblclick() //滑鼠雙擊
 {
+    result.text = result.default;
     document.getElementById("result").textContent = result.default;
     for(let i = 0; i < star_box.length; i++)
     {
@@ -87,12 +95,14 @@ function on_star_ondblclick() //滑鼠雙擊
 
 function on_star_onmouseover(e) //滑鼠移入
 {
+    document.getElementById("result").textContent = str_review_result(star_box.indexOf(e.target) + 1);
     for(let i = 0; i < star_box.length; i++)
         star_box[i].setAttribute("style", `filter: grayscale(${i <= star_box.indexOf(e.target) ? 0 : 1})`);
 }
 
 function on_star_onmouseout() //滑鼠移出
 {
+    document.getElementById("result").textContent = result.text;
     for(let i = 0; i < star_box.length; i++)
         star_box[i].setAttribute("style", `filter: grayscale(${star_status[i]})`);
 }
