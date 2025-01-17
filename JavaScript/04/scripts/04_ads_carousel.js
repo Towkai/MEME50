@@ -50,6 +50,7 @@ function create_imgs()
   {
     let a = document.createElement("a");
     a.setAttribute("href", img_urls[i].link);
+    a.setAttribute("target", "_blank");
     let img = document.createElement("img");
     img.setAttribute("id", "carousel" + i);
     img.setAttribute("src", img_urls[i].url);
