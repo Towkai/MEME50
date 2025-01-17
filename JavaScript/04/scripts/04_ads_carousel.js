@@ -12,6 +12,8 @@ var img_urls = [
 
 var page = 0;
 var clock = null;
+var speed_default = 200; //毫秒
+var speed = 200;
 
 function generate_carousel()
 {
@@ -75,7 +77,48 @@ function create_controlbar(table)
   tr.appendChild(last);
   tr.appendChild(startpause);
   tr.appendChild(next);
+
+  let speed = create_speedbar();
+  tr.appendChild(speed);
+
   table.appendChild(tr);
+}
+
+function create_speedbar()
+{
+  let select = document.createElement("select");
+  select.addEventListener("change", on_speed_change);
+  select.setAttribute("id", "speed");
+  select.setAttribute("name", "speed");
+  select.setAttribute("aria-label", "speed");
+  let options = create_opions([0.25, 0.5, 1.0, 1.25, 1.5, 1.75, 2.0, 3.0, 4.0, 5.0, 6.0]);
+  for (let option of options)
+    select.appendChild(option);
+  return select;
+}
+
+function on_speed_change(e) {
+  console.log(1/e.target.value);
+  speed = speed_default * (1 / e.target.value);
+  clearInterval(clock);
+  clock = setInterval(() => {
+    control_carousel(1);
+  }, speed);
+}
+
+function create_opions(values)
+{
+    let options = [];
+    for (let i = 0; i < values.length; i++)
+    {
+      let option = document.createElement("option");
+      option.setAttribute("value", values[i]);
+      if (values[i] == 1)
+        option.setAttribute("selected","");
+      option.textContent = 'x' + values[i].toFixed(2);
+      options.push(option);
+    }
+    return options;
 }
 
 function onclick_startpause(e)
@@ -86,7 +129,7 @@ function onclick_startpause(e)
     button_startpause.textContent = "II";
     clock = setInterval(() => {
       control_carousel(1);
-    }, 200);
+    }, speed);
   }
   else
   {
