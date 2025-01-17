@@ -4,10 +4,10 @@ window.addEventListener("load", (event) => {
   });
 
 var img_urls = [
-  "images/padoru-0.png",
-  "images/padoru-1.png",
-  "images/padoru-2.png",
-  "images/padoru-3.png"
+  { url: "images/padoru-0.png", link:"https://youtu.be/dQ_d_VKrFgM"},
+  { url: "images/padoru-1.png", link:"https://youtu.be/ZtOykzpYJXk?t=1m20s"},
+  { url: "images/padoru-2.png", link:"https://youtu.be/KoyGsLyUjJE?t=3m45s"},
+  { url: "images/padoru-3.png", link:"https://youtu.be/dQw4w9WgXcQ"},
 ];
 
 var page = 0;
@@ -36,10 +36,13 @@ function create_imgs(table)
   let td = document.createElement('td');
   for (let i = 0; i < img_urls.length; i++)
   {
+    let a = document.createElement("a");
+    a.setAttribute("href", img_urls[i].link);
     let img = document.createElement("img");
     img.setAttribute("id", "carousel" + i);
-    img.setAttribute("src", img_urls[i]);
-    td.appendChild(img);
+    img.setAttribute("src", img_urls[i].url);
+    a.appendChild(img);
+    td.appendChild(a);
   }
   tr.appendChild(td);
   table.appendChild(tr);
