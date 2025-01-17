@@ -10,7 +10,36 @@ function generate_container()
     // let table = generate_zip_table_1();
     let table = generate_zip_table_2();
     div.appendChild(table);
+    let dropdown_county = generate_dropdown("dropdown_county", get_county_list(), select_county);
+    div.appendChild(dropdown_county);
+    let dropdown_township = generate_dropdown("dropdown_township", get_township_list(dropdown_county.value), get_output);
+    div.appendChild(dropdown_township);
+    let zip_output = document.createElement("span");
+    zip_output.setAttribute("id", "zip_output");
+    zip_output.setAttribute("style", "height: min-content")
+    div.appendChild(zip_output);
     document.body.appendChild(div);
+    get_output(); //最初的郵遞區號顯示
+}
+
+function select_county(e)
+{
+    let dropdown_township = document.getElementById("dropdown_township");
+    dropdown_township.innerHTML = "";
+    let options = create_opions(get_township_list(e.target.value));
+    for (let option of options)
+        dropdown_township.appendChild(option);
+    get_output();
+}
+
+function get_output(e)
+{
+    let county = document.getElementById("dropdown_county").value;
+    let township = e == null ? document.getElementById("dropdown_township").value : e.target.value;
+    let zip_output = document.getElementById("zip_output");
+    let output = "郵遞區號：" + get_township_zip(county, township);
+    zip_output.textContent = output;
+    return output;
 }
 
 function generate_title()
@@ -87,7 +116,6 @@ function create_table()
     return table;
 }
 
-
 function generate_table_cell(type, text)
 {
     let cell = document.createElement(type);
@@ -95,7 +123,42 @@ function generate_table_cell(type, text)
     return cell;
 }
 
+function generate_dropdown(id, values, onchange)
+{
+    let select = document.createElement("select");
+    select.addEventListener("change", onchange);
+    select.setAttribute("id", id);
+    select.setAttribute("name", id);
+    select.setAttribute("aria-label", id);
+    select.setAttribute("style", "height: min-content")
+    let options = create_opions(values);
+    for (let option of options)
+        select.appendChild(option);
+    return select ;
+}
 
+function create_opions(values)
+{
+    let options = [];
+    for (let i = 0; i < values.length; i++)
+    {
+        let option = document.createElement("option");
+        option.setAttribute("value", values[i]);
+        option.textContent = values[i];
+        options.push(option);
+    }
+    return options;
+}
+
+function get_county_list() {
+    return data.map(item => item.name);
+}
+function get_township_list(county_name) {
+    return data.find(x => x.name == county_name).districts.map(district => district.name);
+}
+function get_township_zip(county_name, township_name) {
+    return data.find(x => x.name == county_name).districts.find(x => x.name == township_name).zip;
+}
 const data=[
     {
         "name": "臺北市",
