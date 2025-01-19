@@ -1,8 +1,15 @@
 window.addEventListener("load", (event) => {
-    document.head.appendChild(html_link("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:FILL@0..1"));
+    // document.head.appendChild(html_link("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:FILL@0..1"));    //添加google_icon資源(操作按鈕用)
     generate_carousel();
     onclick_startpause(null);
   });
+function html_link(url)
+{
+  let link = document.createElement("link");
+  link.setAttribute("href", url);
+  link.setAttribute("rel", "stylesheet");
+  return link;
+}
 
 var img_urls = [
   { url: "https://raw.githubusercontent.com/Towkai/MEME50/refs/heads/main/JavaScript/04/images/padoru-2.png", link:"https://youtu.be/dQ_d_VKrFgM"},
@@ -17,13 +24,6 @@ var speed_default = 200; //毫秒
 var speed = 200;
 var button_width = "50px"
 
-function html_link(url)
-{
-  let link = document.createElement("link");
-  link.setAttribute("href", url);
-  link.setAttribute("rel", "stylesheet");
-  return link;
-}
 
 function char_unselect(n)
 {
@@ -141,7 +141,7 @@ function create_controlbar()
   let anti = document.createElement('button');
   let next = document.createElement('button');
   last.setAttribute("style", `width: ${button_width}`);
-  startpause.setAttribute("style", `width: ${button_width}`);
+  startpause.setAttribute("style", `width: ${button_width}; font-variation-settings: 'FILL' 1;`);
   start.setAttribute("style", `width: ${button_width}`);
   anti.setAttribute("style", `width: ${button_width}`);
   next.setAttribute("style", `width: ${button_width}`);

@@ -1,6 +1,14 @@
 window.addEventListener("load", (event) => {
+    // document.head.appendChild(html_link("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined")); //添加google_icon資源(輸入正不正確用)
     generate_form();
   });
+function html_link(url)
+{
+    let link = document.createElement("link");
+    link.setAttribute("href", url);
+    link.setAttribute("rel", "stylesheet");
+    return link;
+}
 
 function generate_form()
 {
