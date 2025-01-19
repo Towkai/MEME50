@@ -93,10 +93,11 @@ function create_inputfield(intput_param)
     return  label;
 }
 
-function set_result_symbols(span, classname, iconname)
+function set_result_symbols(span, isPass)
 {
-    span.setAttribute("class", `material-symbols-outlined ${classname}`);
-    span.innerText = iconname;
+    span.setAttribute("class", `material-symbols-outlined ${isPass ? "check_circle" : "check_cancle"}`);
+    span.setAttribute("style", `color: ${isPass ? '#78A75A' : '#BB271A'}`);
+    span.innerText = isPass ? "check_circle" : "cancel";
     return span;
 }
 
@@ -224,7 +225,7 @@ function include_specialsymbol(string)
 function input_result(input_type, isPass, messages)
 {
     let result_symbols = document.getElementById(input_type + "_result_symbols");
-    set_result_symbols(result_symbols, isPass ? "check_circle" : "check_cancle", isPass ? "check_circle" : "cancel");
+    set_result_symbols(result_symbols, isPass);
     let result_message = document.getElementById(input_type + "_result_message");
     result_message.innerText = messages.join(", ");
 }
