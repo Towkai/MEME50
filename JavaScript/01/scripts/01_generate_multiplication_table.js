@@ -7,9 +7,14 @@ function generate_multiplication_table()
     let table = document.createElement('table');
     // table.setAttribute("border", "1");
     table.setAttribute("bgcolor", "Aqua");
-    table.setAttribute("style", "color:red;border-style:ridge;border: 5px solid DodgerBlue;border-collapse: collapse;text-align:left;width:max-content;")
+    table.style["color"] = "red";
+    table.style["border-style"] = "ridge";
+    table.style["border"] = "5px solid DodgerBlue";
+    table.style["border-collapse"] = "collapse";
+    table.style["text-align"] = "left";
+    table.style["width"] = "max-content";
     let caption = document.createElement('caption');
-    caption.setAttribute("style", "color:black");
+    caption.style["color"] = "black";
     caption.textContent = "九九乘法表";
     let tbody = document.createElement('tbody');
     table.appendChild(caption);
@@ -18,7 +23,7 @@ function generate_multiplication_table()
     for (let i = 1; i <= 9; i++)
     {
         let th = document.createElement('th');
-        th.setAttribute("style", "border: 5px solid DodgerBlue;")
+        th.style["border"] = "5px solid DodgerBlue";
         for (let j = 1; j <= 9; j++)
         {
             tr = document.createElement('tr');

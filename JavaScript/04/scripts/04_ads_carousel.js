@@ -30,7 +30,10 @@ function char_unselect(n)
   // return String.fromCharCode(0x2460 + n);
   let button = document.getElementById("progress_button" + n);
   if (button != null)
-    button.setAttribute("style", `width: ${button_width}; font-variation-settings: 'FILL' 0;`);
+  {
+    button.style["width"] = button_width;
+    button.style["font-variation-settings"] = "'FILL' 0";
+  }
   let icon = document.getElementById("progress_icon" + n);
   if (icon != null)
     icon.textContent = "counter_" + (n + 1);
@@ -41,7 +44,10 @@ function char_selected(n)
   // return String.fromCharCode(0x24F5 + n);
   let button = document.getElementById("progress_button" + n);
   if (button != null)
-    button.setAttribute("style", `width: ${button_width}; font-variation-settings: 'FILL' 1;`);
+  {
+    button.style["width"] = button_width;
+    button.style["font-variation-settings"] = "'FILL' 1";
+  }
   // let icon = document.getElementById("progress_icon" + n);
   // switch (n + 1)
   // {
@@ -60,8 +66,10 @@ function char_selected(n)
 function generate_carousel()
 {
   let table = document.createElement("table");
-  table.setAttribute("border", 1)
-  table.setAttribute("style", "border-style:ridge;border-collapse: collapse;text-align:left;width:max-content;")
+  table.style["border-style"] = "ridge";
+  table.style["border-collapse"] = "collapse";
+  table.style["width"] = "max-content";
+  table.setAttribute("border", 1);
   let caption = document.createElement('caption');
   caption.textContent = "ads carousel";
   table.appendChild(caption);
@@ -81,8 +89,10 @@ function create_imgs()
   for (let i = 0; i < img_urls.length; i++)
   {
     let a = document.createElement("a");
-    a.setAttribute("id", "carousel" + i);
-    a.setAttribute("style", "position: absolute; left: 0px")
+    a.hidden = true;
+    a.id = "carousel" + i;
+    a.style["position"] = "absolute";
+    a.style["left"] = "0px";
     a.setAttribute("href", img_urls[i].link);
     a.setAttribute("target", "_blank");
     let img = document.createElement("img");
@@ -96,7 +106,7 @@ function create_imgs()
 function create_block()
 {
     let img = document.createElement("img");
-    img.setAttribute("style", "visibility:hidden");
+    img.style["visibility"] = "hidden";
     img.setAttribute("src", img_urls[2].url);
     return img;
 }
@@ -126,11 +136,14 @@ function set_carousel(e)
 function create_progressbar()
 {
   let tr = document.createElement("tr");
-  tr.setAttribute("style", "text-align:center; display: flex; justify-content: space-around;margin:0px 25px 0px 25px;");
+  tr.style["text-align"] = "center";
+  tr.style["display"] = "flex";
+  tr.style["justify-content"] = "space-around";
+  tr.style["margin"] = "0px 25px 0px 25px";
   for (let i = 0; i < img_urls.length; i++)
   {
     let button = document.createElement("button");
-    button.setAttribute("id", "progress_button" + i);
+    button.id = "progress_button" + i;
     // button.setAttribute("style", `width: ${button_width}`);
     button.addEventListener("click", (e) => {pause_carousel(null);set_carousel(i)});
     button.value = i;
@@ -143,17 +156,21 @@ function create_progressbar()
 function create_controlbar()
 {
   let tr = document.createElement("tr");
-  tr.setAttribute("style", "text-align:center; display: flex; justify-content: space-around;margin:0px 25px 0px 25px;");
+  tr.style["text-align"] = "center";
+  tr.style["display"] = "flex";
+  tr.style["justify-content"] = "space-around";
+  tr.style["margin"] = "0px 25px 0px 25px";
   let last = document.createElement('button');
   let startpause = document.createElement('button');
   let start = document.createElement('button');
   let anti = document.createElement('button');
   let next = document.createElement('button');
-  last.setAttribute("style", `width: ${button_width}`);
-  startpause.setAttribute("style", `width: ${button_width}; font-variation-settings: 'FILL' 1;`);
-  start.setAttribute("style", `width: ${button_width}`);
-  anti.setAttribute("style", `width: ${button_width}`);
-  next.setAttribute("style", `width: ${button_width}`);
+  last.style["width"] = button_width;
+  startpause.style["width"] = button_width;
+  startpause.style["font-variation-settings"] = "'FILL' 1";
+  start.style["width"] = button_width;
+  anti.style["width"] = button_width;
+  next.style["width"] = button_width;
   last.appendChild(create_google_symbols_outlined(null, "arrow_back"));
   startpause.appendChild(create_google_symbols_outlined("icon_startpause", null));
   start.appendChild(create_google_symbols_outlined(null, "start"));
@@ -164,11 +181,11 @@ function create_controlbar()
   start.addEventListener("click", e => {start_carousel(null); });
   anti.addEventListener("click", e => {anti_carousel(null); });
   next.addEventListener("click", e => {pause_carousel(null); control_carousel(1);});
-  last.setAttribute("title", "上一張");
-  startpause.setAttribute("title", "開始/暫停");
-  start.setAttribute("title", "向前播放");
-  anti.setAttribute("title", "向後倒播");
-  next.setAttribute("title", "下一張");
+  last.title = "上一張";
+  startpause.title = "開始/暫停";
+  start.title = "向前播放";
+  anti.title = "向後倒播";
+  next.title = "下一張";
   tr.appendChild(last);
   tr.appendChild(startpause);
   tr.appendChild(start);
@@ -184,10 +201,10 @@ function create_speedbar()
 {
   let select = document.createElement("select");
   select.addEventListener("change", on_speed_change);
-  select.setAttribute("id", "speed");
-  select.setAttribute("name", "speed");
-  select.setAttribute("aria-label", "speed");
-  select.setAttribute("style", `width: ${button_width}`);
+  select.id = "speed";
+  select.name = "speed";
+  select.ariaLabel = "speed";
+  select.style["width"] = button_width;
   let speed_list = [];
   for (let i = 0.5; i <= 6; i += 0.5)
   {
@@ -214,9 +231,9 @@ function create_opions(values)
     for (let i = 0; i < values.length; i++)
     {
       let option = document.createElement("option");
-      option.setAttribute("value", values[i]);
+      option.value = values[i];
       if (values[i] == 1)
-        option.setAttribute("selected","");
+        option.selected = true;
       option.textContent = 'x' + values[i].toFixed(1);
       options.push(option);
     }
@@ -271,11 +288,10 @@ function anti_carousel(e)
 function create_google_symbols_outlined(id, icon)
 {
   let span = document.createElement("span");
-  span.setAttribute("class", "material-symbols-outlined");
-  span.setAttribute("style", "line-height: 100%");
-  if (id)
-    span.setAttribute("id", id);
-  if (icon)
+  span.className = "material-symbols-outlined";
+  if (id != null)
+    span.id = id;
+  if (icon != null)
     span.textContent = icon;
   return span;
 }

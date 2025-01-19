@@ -6,7 +6,7 @@ window.addEventListener("load", (event) => {
 function generate_container()
 {
     let div = document.createElement("div");
-    div.setAttribute("style","display: flex;")
+    div.style["display"] = "flex";
     // let table = generate_zip_table_1();
     let table = generate_zip_table_2();
     div.appendChild(table);
@@ -15,8 +15,8 @@ function generate_container()
     let dropdown_township = generate_dropdown("dropdown_township", get_township_list(dropdown_county.value), get_output);
     div.appendChild(dropdown_township);
     let zip_output = document.createElement("span");
-    zip_output.setAttribute("id", "zip_output");
-    zip_output.setAttribute("style", "height: min-content")
+    zip_output.id = "zip_output";
+    zip_output.style["height"] = "min-content";
     div.appendChild(zip_output);
     document.body.appendChild(div);
     get_output(); //最初的郵遞區號顯示
@@ -63,7 +63,7 @@ function generate_zip_table_1()
         for (let district of county.districts)
         {
             let district_row = document.createElement("tr");
-            district_row.setAttribute("class", "district_row");
+            district_row.className = "district_row";
             let zip = generate_table_cell("td", district.zip);
             let longest_length = Math.max(...(data.flatMap(city => city.districts.map(district => district.name.length))));
             let township = generate_table_cell("td", district.name.padEnd(longest_length, "　"));
@@ -86,7 +86,7 @@ function generate_zip_table_2()
     {
         let tr = document.createElement("tr");
         let th = generate_table_cell("th", county.name);
-        th.setAttribute("rowspan", county.districts.length);
+        th.rowSpan = county.districts.length;
         tr.appendChild(th);
 
         for (let i = 0; i < county.districts.length; i++)
@@ -112,7 +112,10 @@ function create_table()
 {
     let table = document.createElement("table");
     table.setAttribute("border", 1);
-    table.setAttribute("style", "display: inline-table;border-collapse: collapse;margin-right: 50px;border-color: Blue;");
+    table.style["display"] = "inline-table";
+    table.style["border-collapse"] = "collapse";
+    table.style["margin-right"] = "50px";
+    table.style["border-color"] = "Blue";
     return table;
 }
 
@@ -127,10 +130,10 @@ function generate_dropdown(id, values, onchange)
 {
     let select = document.createElement("select");
     select.addEventListener("change", onchange);
-    select.setAttribute("id", id);
-    select.setAttribute("name", id);
-    select.setAttribute("aria-label", id);
-    select.setAttribute("style", "height: min-content")
+    select.id = id;
+    select.name = id;
+    select.ariaLabel = id;
+    select.style["height"] = "min-content";
     let options = create_opions(values);
     for (let option of options)
         select.appendChild(option);
@@ -143,7 +146,7 @@ function create_opions(values)
     for (let i = 0; i < values.length; i++)
     {
         let option = document.createElement("option");
-        option.setAttribute("value", values[i]);
+        option.value = values[i];
         option.textContent = values[i];
         options.push(option);
     }

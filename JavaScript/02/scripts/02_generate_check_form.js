@@ -103,8 +103,8 @@ function create_inputfield(intput_param)
 
 function set_result_symbols(span, isPass)
 {
-    span.setAttribute("class", `material-symbols-outlined ${isPass ? "check_circle" : "check_cancle"}`);
-    span.setAttribute("style", `color: ${isPass ? '#78A75A' : '#BB271A'}`);
+    span.className = `material-symbols-outlined ${isPass ? "check_circle" : "check_cancle"}`;
+    span.style["color"] = isPass ? '#78A75A' : '#BB271A';
     span.innerText = isPass ? "check_circle" : "cancel";
     return span;
 }
