@@ -77,19 +77,28 @@ function create_imgs()
 {
   let tr = document.createElement("tr");
   let td = document.createElement('td');
+  td.appendChild(create_block());
   for (let i = 0; i < img_urls.length; i++)
   {
     let a = document.createElement("a");
+    a.setAttribute("id", "carousel" + i);
+    a.setAttribute("style", "position: absolute; left: 0px")
     a.setAttribute("href", img_urls[i].link);
     a.setAttribute("target", "_blank");
     let img = document.createElement("img");
-    img.setAttribute("id", "carousel" + i);
     img.setAttribute("src", img_urls[i].url);
     a.appendChild(img);
     td.appendChild(a);
   }
   tr.appendChild(td);
   return tr;
+}
+function create_block()
+{
+    let img = document.createElement("img");
+    img.setAttribute("style", "visibility:hidden");
+    img.setAttribute("src", img_urls[2].url);
+    return img;
 }
 
 function control_carousel(e)
@@ -104,8 +113,8 @@ function set_carousel(e)
   page = e;
   for (let i = 0; i < img_urls.length; i++)
   {
-    let img = document.getElementById("carousel" + i);
-    img.setAttribute("style", `display: ${i == page ? '' : 'none'}`);
+    let carousel = document.getElementById("carousel" + i);
+    carousel.hidden = (i == page) ? false : true;
     char_unselect(i);
     if (i == page)
       char_selected(i);
