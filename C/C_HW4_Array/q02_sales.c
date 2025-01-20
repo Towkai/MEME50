@@ -28,6 +28,8 @@ void main()
     b(sales_by_men);
     c(sales_by_products);
     d(sales_by_products);
+    free(sales_by_men);
+    free(sales_by_products);
 }
 
 void a(int arr[]) 
@@ -60,7 +62,7 @@ void b(int arr[])
         best_man++;
     }
     
-    
+    free(arr_clone);
     printf("b. 有最好業績（銷售總金額最多者）的銷售員為：%s\n", names[0][best_man]);
 }
 
@@ -94,6 +96,6 @@ void d(int arr[])
         best_product++;
     }
     
-    
+    free(arr_clone);
     printf("d. 銷售總金額最多的產品為：%s\n", names[1][best_product]);
 }
