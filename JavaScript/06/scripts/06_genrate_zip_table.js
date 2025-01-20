@@ -134,14 +134,7 @@ function generate_dropdown(id, values, onchange)
     select.name = id;
     select.ariaLabel = id;
     select.style["height"] = "min-content";
-    let options = create_opions(values);
-    for (let option of options)
-        select.appendChild(option);
-    return select ;
-}
-
-function create_opions(values)
-{
+    // let options = create_opions(values);
     let options = [];
     for (let i = 0; i < values.length; i++)
     {
@@ -150,8 +143,23 @@ function create_opions(values)
         option.textContent = values[i];
         options.push(option);
     }
-    return options;
+    for (let option of options)
+        select.appendChild(option);
+    return select ;
 }
+
+// function create_opions(values) //避免在整合作業的html引用到同名function
+// {
+//     let options = [];
+//     for (let i = 0; i < values.length; i++)
+//     {
+//         let option = document.createElement("option");
+//         option.value = values[i];
+//         option.textContent = values[i];
+//         options.push(option);
+//     }
+//     return options;
+// }
 
 function get_county_list() {
     return data.map(item => item.name);

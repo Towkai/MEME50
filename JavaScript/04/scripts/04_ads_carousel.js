@@ -217,7 +217,6 @@ function create_speedbar()
 }
 
 function on_speed_change(e) {
-  console.log(1/e.target.value);
   speed = speed_default * (1 / e.target.value);
   clearInterval(clock);
   clock = setInterval(() => {
@@ -232,8 +231,7 @@ function create_opions(values)
     {
       let option = document.createElement("option");
       option.value = values[i];
-      if (values[i] == 1)
-        option.selected = true;
+      option.selected = values[i] == 1;
       option.textContent = 'x' + values[i].toFixed(1);
       options.push(option);
     }
