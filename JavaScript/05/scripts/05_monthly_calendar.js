@@ -43,8 +43,7 @@ function create_calendar() {
     for (let j = -1; j < 7; j++)  //-1留給標題
     {
       let cell = document.createElement(j == -1 ? "th" : "td");
-      cell.class = "day" + j;
-      cell.classList.add("day");
+      cell.classList.add(j == -1 ? "day_title" : "day");
       cell.classList.add("day" + j);
       cell.id = `day${i}-${j}`;
       cell.width = row_height;
@@ -128,7 +127,6 @@ function set_day_options(month_value) {
 }
 function on_year_change(e) {
   let month_value = document.getElementById("month-select").value;
-  console.log("[on_year_change]month_value: " + month_value);
   if (month_value == -1)
     return;
   isleap = e.target.value % 4 == 0;
@@ -168,12 +166,12 @@ function on_day_change(e) {
   let day_value = parseInt(e.target.value);
   let information = document.getElementById("result");
   information.innerHTML = `目前選擇的是 ${year_value} 年 ${month_value} 月 ${day_value} 日<br>${get_weekday_cht(year_value, month_value, day_value)}`;
-  let days = document.querySelectorAll(".day");
-  days.forEach(element => element.style["background-color"] = "white");
-
+  
   let startday = get_weekday(year_value, month_value, 1);
   let day_id = `day${Math.floor((startday + day_value - 1) / 7)}-${(startday + day_value - 1) % 7}`;
-  document.getElementById(day_id).style["background-color"] = "burlywood";
+  let days = document.getElementsByClassName("day");
+  for (let i = 0; i < days.length; i++)
+    days[i].style["background-color"] = days[i].id == day_id ? "burlywood" : "white";
 }
 
 function create_month_option() {
@@ -228,18 +226,13 @@ function get_weekday_cht(y, m, d) {
 function set_calendar_content(y, m) {
   let start = get_weekday(y, m, 1);
   let monthday = get_month_day(m);
-  console.log("monthday at: " + monthday);
-  for (let i = 0; i < 35; i++)  //總共有35格
+  let days = document.getElementsByClassName("day");
+  for (let i = 0; i < days.length; i++)  //總共有35格
   {
-    let day = document.getElementById(`day${Math.floor(i / 7)}-${i % 7}`);
-    day.style["background-color"] = "white";
+    days[i].style["background-color"] = "white";
     if (i >= start && i < monthday + start)
-    {
-      day.textContent = i - start + 1;
-    }
+      days[i].textContent = i - start + 1;
     else
-    {
-      day.textContent = "";
-    }
+      days[i].textContent = "";
   }
 }
