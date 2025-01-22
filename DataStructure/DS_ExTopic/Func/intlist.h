@@ -71,6 +71,7 @@ int insert(Node **head, int value, int index)
     else
     {
         Node *p = *head;
+        Node *prev = NULL;
         int i = 0;
 
         // 尋找插入位置
@@ -80,6 +81,7 @@ int insert(Node **head, int value, int index)
             {
                 return 0; // 原始鏈表長度不足
             }
+            prev = p;
             p = p->next;
             i++;
         }
@@ -93,11 +95,6 @@ int insert(Node **head, int value, int index)
         }
         else
         {
-            Node *prev = *head;
-            for (int j = 0; j < index - 1; j++)
-            {
-                prev = prev->next; // 找到插入位置的前一個節點
-            }
             ins->next = prev->next; // 將新節點的 next 指向插入位置的節點
             prev->next = ins;       // 更新前一個節點的 next 指向新節點
         }
@@ -116,6 +113,7 @@ int insertList(Node **head, Node *insList, int index)
     else
     {
         Node *p = *head;
+        Node *prev = NULL;
         int i = 0;
 
         // 尋找插入位置
@@ -125,6 +123,7 @@ int insertList(Node **head, Node *insList, int index)
             {
                 return 0; // 原始鏈表長度不足
             }
+            prev = p;
             p = p->next;
             i++;
         }
@@ -137,14 +136,6 @@ int insertList(Node **head, Node *insList, int index)
         }
         else
         {
-            Node *prev = *head;
-            for (int j = 0; j < index - 1; j++)
-            {
-                prev = prev->next; // 找到插入位置的前一個節點
-            }
-            p = insList;
-            while (p->next != NULL)
-                p = p->next;
             p->next = prev->next; // 將新節點的 next 指向插入位置的節點
             prev->next = insList; // 更新前一個節點的 next 指向新節點
         }
