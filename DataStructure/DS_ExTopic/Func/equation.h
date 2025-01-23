@@ -55,7 +55,6 @@ Item *insertPoly(Item **head, Polynomial value)
     // 插入到空鏈表
     if (*head == NULL)
     {
-        printf("[insertPoly]head == null\n");
         *head = new_Item_poly(value);
         return *head; // 成功
     }
@@ -66,12 +65,8 @@ Item *insertPoly(Item **head, Polynomial value)
         int i = 0;
 
         // 尋找插入位置
-        printf("[insertPoly]p != NULL = %d\n", p != NULL);
-        printf("[insertPoly]p->poly.exponent = %d, value.exponent = %d, %d\n", p->poly.exponent, value.exponent, p->poly.exponent <= value.exponent);
         while (p != NULL && p->poly.exponent > value.exponent) {
-        printf("[insertPoly]while i = %d\n", i);
             if (p->poly.exponent == value.exponent) {
-        printf("[insertPoly]p->poly.exponent == value.exponent\n");
                 p->poly.coefficient += value.coefficient;
                 return *head; // 如果指數相等，則更新係數並返回
             }
@@ -79,7 +74,6 @@ Item *insertPoly(Item **head, Polynomial value)
             p = p->next;
             i++;
         }
-        printf("[insertPoly]last_i = %d\n", i);
         if (p != NULL && p->poly.exponent == value.exponent)
         {
             p->poly.coefficient += value.coefficient;
@@ -101,8 +95,6 @@ Item *insertPoly(Item **head, Polynomial value)
                 {
                     ins->next = prev->next; // 將新節點的 next 指向插入位置的節點
                     prev->next = ins;       // 更新前一個節點的 next 指向新節點
-                    printf("[insertPoly]: ");
-                    traverse(*head);
                 }
             }
         }
@@ -172,7 +164,6 @@ void traverse(Item *head)
             p = p->next;
         }
     }
-    printf("\n");
 }
 
 int count(Item *head)
@@ -225,14 +216,8 @@ Item *addpolynomial(Item *a, Item *b)
 Item *mulpolynomial(Item *a, Item *b)
 {
     Item *p = a;
-    printf("[mulpolynomial]a: \n");
-    traverse(a);
     Item *q = b;
-    printf("[mulpolynomial]b: \n");
-    traverse(b);
     Item *temp = NULL;
-    printf("[mulpolynomial]temp: \n");
-    traverse(temp);
     int i = 0;
     while (p != NULL)
     {
@@ -241,20 +226,16 @@ Item *mulpolynomial(Item *a, Item *b)
         {
             Polynomial *temp_poly = mulItem(p->poly, q->poly);
             insertPoly(&temp, *temp_poly);
-            printf("[mulpolynomial]temp: %d %d\n", temp_poly->coefficient, temp_poly->exponent);
-            traverse(temp);
             q = q->next;
-            printf("[mulpolynomial]i = %d\n", i);
             i++;
         }
         p = p->next;
     }
-    printf("[mulpolynomial]exit\n");
     return temp;
 }
 Polynomial *mulItem(Polynomial a, Polynomial b)
 {
-    printf("[mulItem]%dx^%d * %dx^%d\n", a.coefficient, a.exponent, b.coefficient, b.exponent);
+    // printf("[mulItem]%dx^%d * %dx^%d\n", a.coefficient, a.exponent, b.coefficient, b.exponent);
     return new_Polynomial(a.coefficient * b.coefficient, a.exponent + b.exponent);
 }
 int equalItem(Polynomial a, Polynomial b)
