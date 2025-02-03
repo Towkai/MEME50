@@ -11,7 +11,7 @@ void main()
 {
     int length;
     
-    printf("輸入一個自然數：");
+    printf("輸入一個自然數N，產生N個亂數並找出最大與最小值：");
     scanf("%d", &length);
     
     printf("產生長度為 %d 的陣列：\n", length);
@@ -25,10 +25,10 @@ void main()
         return; // 返回錯誤碼
     }
     random_arr(arr, length);
-    printf("original_arr: ");
+    printf("原始陣列：");
     print_array(arr, length);
     bubble_sort(arr, length);
-    printf("sorted_arr: ");
+    printf("經排序後：");
     print_array(arr, length);
     printf("此陣列最小值為：%d，最大值為：%d\n", arr[0], arr[length - 1]);
     

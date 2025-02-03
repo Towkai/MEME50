@@ -8,7 +8,7 @@ int factorial(int x);
 
 void main() {
     int input;
-    printf("輸入一個自然數: ");
+    printf("輸入一個自然數計算皆乘: ");
     scanf("%d", &input);
     if (input >= 0)
         printf("%d! = %d\n", input, factorial(input));
