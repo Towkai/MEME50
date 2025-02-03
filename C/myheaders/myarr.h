@@ -1,4 +1,5 @@
 #include<stdlib.h>
+#include<string.h>
 #include<time.h>
 #define LENGTH(X) (sizeof(X)/sizeof(X[0])) //只能用在宣告當下，經傳遞後失效
 
@@ -8,7 +9,7 @@ void print_array(int arr[], int n)
     for (int i = 0; i < n; i++) {
         printf("%d, ", arr[i]);
     }
-    printf("\b\b]\n");
+    printf(n == 0 ? "]" : "\b\b]");
 }
 
 void random_arr(int arr[], int len) //產生一個長度為len的亂數陣列
