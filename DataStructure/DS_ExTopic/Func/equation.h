@@ -101,7 +101,7 @@ Item *insertPoly(Item **head, Polynomial value)
         return *head; // 成功
     }
 }
-void delete(Item **head, Item *ptr)
+void del(Item **head, Item *ptr)
 {
     if (ptr == NULL)
         return;

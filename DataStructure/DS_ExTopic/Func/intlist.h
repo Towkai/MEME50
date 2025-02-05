@@ -201,7 +201,7 @@ void traverse(Node *head)
     while (p != NULL)
     {
         if (p != head)
-            printf(",");
+            printf(", ");
         printf("%d", p->data);
         p = p->next;
     }

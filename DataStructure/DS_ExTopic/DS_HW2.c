@@ -23,6 +23,7 @@ void main() {
     // printf("[main]node2_2 =");
     // traverse(node2_2);
 
+    printf("多項式相乘\n");
     printf("(");
     traverse(node1_2);
     printf(")");
