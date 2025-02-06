@@ -164,7 +164,7 @@ void insertNode(Node **head, Node *ptr, int value)
         }
     }
 }
-void delete(Node **head, Node *ptr)
+void del(Node **head, Node *ptr)
 {
     if (ptr == NULL)
         return;

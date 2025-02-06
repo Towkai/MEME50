@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "Func/equation.h"
+#include "../myheaders/equation.h"
 
 void main() {
     Item *node1_2 = new_Item(5, 2);

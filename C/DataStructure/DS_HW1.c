@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "Func/intlist.h"
+#include "../myheaders/intlist.h"
 
 void main() {
     Node *head = NULL;
