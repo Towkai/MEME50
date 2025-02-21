@@ -1,0 +1,19 @@
+<html>
+<body>
+    <form method="post" action="http://localhost:8181/one" enctype="multipart/form-data">
+        <label>single file: <input type="file" name="file" /></label><br>
+        <input type="submit" value="upload" />
+    </form>
+    <hr>    
+    <form method="post" action="http://localhost:8181/multi" enctype="multipart/form-data">
+        <label>multi files: <input type="file" name="file" multiple/></label><br>
+        <input type="submit" value="upload" />
+    </form>
+    <hr>    
+    <form method="post" action="http://localhost:8181/many" enctype="multipart/form-data">
+        <label>file 1: <input type="file" name="file1" /></label><br>
+        <label>file 2: <input type="file" name="file2" /></label><br>
+        <input type="submit" value="upload" />
+    </form>
+</body>
+</html>
