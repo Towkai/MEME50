@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h2>員工資料</h2>
+    <table border="1" id="demo"></table>
+
+    <script>
+        $.ajax({
+            url:"http://localhost:8181/employee/getall",
+            type: "GET",
+            success: function(data) {
+                show(data);
+            }
+        })
+        function show(emps) {
+            let txt = "<tr><th>員編</th><th>姓名</th><th>到職日</th><th>薪資</th><th>部編</th><th>職稱</th></tr>";
+            for (let i = 0; i < emps.length; i++) {
+                txt += "<tr><td>" + emps[i].empno + "</td>";
+                txt += "<td>" + emps[i].ename + "</td>";
+                txt += "<td>" + emps[i].hiredate + "</td>";
+                txt += "<td>" + emps[i].salary + "</td>";
+                txt += "<td>" + emps[i].deptno + "</td>";
+                txt += "<td>" + emps[i].title + "</td></tr>";
+            }
+            $("#demo").html(txt);
+        }
+    </script>
+</body>
+</html>

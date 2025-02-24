@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h2>員工資料</h2>
+    <button id="all">查詢所有員工資料</button>
+    <p>員工編號：<input type="text" id="empno"></p>
+    <button id="one">查詢</button>
+    <table border="1" id="demo"></table>
+
+    <script>
+        $("#all").on("click", function() {
+            $.ajax({
+                url:"http://localhost:8181/employee/getall",
+                type: "GET",
+                success: function(data) {
+                    showall(data);
+                }
+            })
+        });
+        function showall(emps) {
+            let txt = "<tr><th>員編</th><th>姓名</th><th>到職日</th><th>薪資</th><th>部編</th><th>職稱</th></tr>";
+            console.log(emps);
+            for (let i = 0; i < emps.length; i++) {
+                txt += "<tr><td>" + emps[i].empno + "</td>";
+                txt += "<td>" + emps[i].ename + "</td>";
+                txt += "<td>" + emps[i].hiredate + "</td>";
+                txt += "<td>" + emps[i].salary + "</td>";
+                txt += "<td>" + emps[i].deptno + "</td>";
+                txt += "<td>" + emps[i].title + "</td></tr>";
+            }
+            $("#demo").html(txt);
+        }
+        $("#one").on("click", function() {
+            $.ajax({
+                url:"http://localhost:8181/employee/getone/" + $("#empno").val(),
+                type: "GET",
+                success: function(data) {
+                    showone(data);
+                }
+            })
+        });
+        function showone(emp) {
+            let txt = "";
+            txt += `<tr><td>員編</td>   <td>${emp.empno}</td></tr>`;
+            txt += `<tr><td>姓名</td>   <td>${emp.ename}</td></tr>`;
+            txt += `<tr><td>到職日</td> <td>${emp.hiredate}</td></tr>`;
+            txt += `<tr><td>薪資</td>   <td>${emp.salary}</td></tr>`;
+            txt += `<tr><td>部編</td>   <td>${emp.deptno}</td></tr>`;
+            txt += `<tr><td>職稱</td>   <td>${emp.title}</td></tr>`;
+            $("#demo").html(txt);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h2>員工資料</h2>
+    <p>員工編號：<input type="text" id="empno"></p>
+    <button id="one">查詢</button>
+    <table border="1" id="demo"></table>
+
+    <script>
+        $("#one").on("click", function() {
+            $.ajax({
+            url:"http://localhost:8181/employee/getone/" + $("#empno").val(),
+            type: "GET",
+            success: function(data) {
+                show(data);
+            }
+        })});
+        
+        function show(emp) {
+            let txt = "";
+            txt += `<tr><td>員編</td>   <td>${emp.empno}</td></tr>`;
+            txt += `<tr><td>姓名</td>   <td>${emp.ename}</td></tr>`;
+            txt += `<tr><td>到職日</td> <td>${emp.hiredate}</td></tr>`;
+            txt += `<tr><td>薪資</td>   <td>${emp.salary}</td></tr>`;
+            txt += `<tr><td>部編</td>   <td>${emp.deptno}</td></tr>`;
+            txt += `<tr><td>職稱</td>   <td>${emp.title}</td></tr>`;
+            $("#demo").html(txt);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <h2>員工資料</h2>
+    <table border="1">
+        <tr><th>員編</th><th>姓名</th><th>到職日</th><th>薪資</th><th>部編</th><th>職稱</th></tr>
+        <% for(let i = 0; i < emps.length; i++) { %>
+        <tr>
+            <td><%= emps[i].empno %></td>
+            <td><%= emps[i].ename %></td>
+            <td><%= emps[i].hiredate %></td>
+            <td><%= emps[i].salary %></td>
+            <td><%= emps[i].deptno %></td>
+            <td><%= emps[i].title %></td>
+        </tr>
+        <% } %>
+    </table>
+</body>
+</html>
