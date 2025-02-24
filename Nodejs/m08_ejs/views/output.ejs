@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title><%- title %></title>
+</head>
+<body>
+    <h2><%= title %></h2>
+    <%- category %>
+    <ul>
+        <% for(let i = 0; i < users.length; i++) { %>
+            <li><%= users[i] %></li>
+        <% } %>
+    </ul>
+    name: <%= emp.ename %><br>
+    salary: <%= emp.salary %><br>
+</body>
+</html>

@@ -1,0 +1,66 @@
+[
+ {
+  "empno": "1001",
+  "ename": "潘麗珍",
+  "hiredate": "2010-11-10",
+  "salary": "56000",
+  "deptno": "100",
+  "title": "senior engineer"
+ },
+ {
+  "empno": "1002",
+  "ename": "林麗如",
+  "hiredate": "2008-03-22",
+  "salary": "34000",
+  "deptno": "100",
+  "title": "engineer"
+ },
+ {
+  "empno": "1003",
+  "ename": "林建生",
+  "hiredate": "2011-08-14",
+  "salary": "77000",
+  "deptno": "200",
+  "title": "manager"
+ },
+ {
+  "empno": "1004",
+  "ename": "吳美芳",
+  "hiredate": "2005-04-04",
+  "salary": "67000",
+  "deptno": "300",
+  "title": "manager"
+ },
+ {
+  "empno": "1005",
+  "ename": "王小麗",
+  "hiredate": "2012-12-12",
+  "salary": "37000",
+  "deptno": "200",
+  "title": "engineer"
+ },
+ {
+  "empno": "1006",
+  "ename": "胡志強",
+  "hiredate": "2007-07-06",
+  "salary": "44000",
+  "deptno": "300",
+  "title": "senior engineer"
+ },
+ {
+  "empno": "1007",
+  "ename": "何偉生",
+  "hiredate": "2003-09-11",
+  "salary": "39000",
+  "deptno": "100",
+  "title": "engineer"
+ },
+ {
+  "empno": "1008",
+  "ename": "林人生",
+  "hiredate": "1999-05-16",
+  "salary": "55000",
+  "deptno": "100",
+  "title": "SA_REP"
+ }
+]
