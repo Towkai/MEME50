@@ -1,38 +1,20 @@
-const employ_empty = {
-    empno: '',
-    ename: '',
-    hiredate: '',
-    salary: '',
-    deptno: '',
-    title: ''
+const caption = {
+    en: { insert: "insert", search: "search"},
+    cht: { insert: "新增員工", search: "員工搜尋"},
+    chs: { insert: "新增员工", search: "员工搜索"}
 }
-const employ_en  = {
-    insert_status: {
-        failed: 'insert failed',
-        success: 'insert success'
-    },
-    empno: "empno",
-    ename: "ename",
-    hiredate: "hiredate",
-    salary: "salary",
-    deptno: "deptno",
-    title: "title"
+const content = {
+    empty:{ empno: '',ename: '',hiredate: '',salary: '',deptno: '',title: ''},
+    en: { empno: "empno", ename: "ename", hiredate: "hiredate", salary: "salary", deptno: "deptno", title: "title"},
+    cht: { empno: "員編", ename: "姓名", hiredate: "到職日", salary: "薪資", deptno: "部編", title: "職稱"},
+    chs: { empno: "员编", ename: "姓名", hiredate: "到职日", salary: "薪资", deptno: "部编", title: "职称"},
 }
-const employ_cht = {
-    empno: "員編",
-    ename: "姓名",
-    hiredate: "到職日",
-    salary: "薪資",
-    deptno: "部編",
-    title: "職稱"
-}
-const employ_chs = {
-    empno: "员编",
-    ename: "姓名",
-    hiredate: "到职日",
-    salary: "薪资",
-    deptno: "部编",
-    title: "职称"
+const status = {
+    insert: {
+        en: {failed: {incomplete: 'data incomplete', repeat: 'empno repeat'},success: 'success'},
+        cht: {failed: {incomplete: '資料不齊', repeat: '已有此員編'},success: '新增成功'},
+        chs: {failed: {incomplete: '资料不齐', repeat: '已有此员编'},success: '新增成功'}
+    }
 }
 exports.employ = {
     empno: 0,
@@ -43,10 +25,10 @@ exports.employ = {
     title: 5
 }
 exports.employ_text = {
-    empty: {caption: '', content: employ_empty},
-    "en": {caption: {insert: 'insert', search: 'search'}, status: {insert: {failed: {incomplete: 'data incomplete', repeat: 'empno repeat'},success: 'success'}}, content: employ_en},
-    "zh-CN": {caption: {insert: '新增员工', search: '搜索'}, status: {insert: {failed: {incomplete: '资料不齐', repeat: '已有此员编'},success: '新增成功'}}, content: employ_chs},
-    "zh-TW": {caption: {insert: '新增員工', search: '搜尋'}, status: {insert: {failed: {incomplete: '資料不齊', repeat: '已有此員編'},success: '新增成功'}}, content: employ_cht}
+    empty: {caption: '', content: content.empty},
+    "en": {caption: caption.en, status: {insert: status.insert.en}, content: content.en},
+    "zh-TW": {caption: caption.cht, status: {insert: status.insert.cht}, content: content.cht},
+    "zh-CN": {caption: caption.chs, status: {insert: status.insert.chs}, content: content.chs},
 }
 exports.getCurrentLang = function(acceptlang) {    //尋找多國語言
     let acceptlang_split1 = acceptlang.split(';');
