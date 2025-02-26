@@ -8,6 +8,8 @@ app.set('view engine', 'ejs');
 var router = require('./main_router');
 app.use(express.urlencoded({extended: true}));
 app.use('/nodejs_homework', router);
+app.use('/public', express.static('public'));
+
 // app.post('/nodejs_homework/insert', (req, res) => {
 //     console.log(req.body);
 //     res.send("");

@@ -17,12 +17,22 @@ const status = {
     }
 }
 exports.employ = {
-    empno: 0,
-    ename: 1,
-    hiredate: 2,
-    salary: 3,
-    deptno: 4,
-    title: 5
+    enum: {
+        empno: 0,
+        ename: 1,
+        hiredate: 2,
+        salary: 3,
+        deptno: 4,
+        title: 5
+    },
+    type: {
+        empno: "text",
+        ename: "text",
+        hiredate: "date",
+        salary: "number",
+        deptno: "text",
+        title: "text"
+    }
 }
 exports.employ_text = {
     empty: {caption: '', content: content.empty},

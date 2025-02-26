@@ -1,7 +1,7 @@
 const fs = require('fs');
-const readline = require('readline');
-const ejs_file = "insert.ejs";
 const csv_file = "employee.csv";
+const ejs_file = "insert.ejs";
+const readline = require('readline');
 
 var empno_repeat = null;
 
@@ -12,7 +12,7 @@ function lineReader(file)
 }
 function check_repeat_empno(lineReader, empno) {
     lineReader.on('line', line => {
-        if (line.split(',')[multilang.employ.empno] == empno)
+        if (line.split(',')[multilang.employ.enum.empno] == empno)
             return empno_repeat = true;
     });
 }
@@ -24,6 +24,7 @@ exports.view_insert = (req, res) => {
     employ.hiredate = new Date().toLocaleDateString('en-CA', {timeZone: 'Asia/Taipei', hour12: false });
     let text = multilang.getCurrentLang(req.headers['accept-language']);
     res.render(ejs_file, {  //固定用法：建立名為"views"的資料夾，將"insert.ejs"放在裡面
+        input_type: multilang.employ.type,
         status:'',
         caption: text.caption.insert,
         text: text.content,

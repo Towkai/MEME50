@@ -1,8 +1,8 @@
-const csv2json = require('convert-csv-to-json');
-var json = csv2json.fieldDelimiter(',').getJsonFromCsv('employee.csv');
 const fs = require('fs');
-const ejs_file = "insert.ejs";
 const csv_file = "employee.csv";
+const ejs_file = "insert.ejs";
+const csv2json = require('convert-csv-to-json');
+var json = csv2json.fieldDelimiter(',').getJsonFromCsv(csv_file);
 
 const multilang = require('./multilang.js');
 
@@ -12,6 +12,7 @@ exports.view_insert = (req, res) => {
     employ.hiredate = new Date().toLocaleDateString('en-CA', {timeZone: 'Asia/Taipei', hour12: false });
     let text = multilang.getCurrentLang(req.headers['accept-language']);
     res.render(ejs_file, {  //固定用法：建立名為"views"的資料夾，將"insert.ejs"放在裡面
+        input_type: multilang.employ.type,
         status:'',
         caption: text.caption.insert,
         text: text.content,
