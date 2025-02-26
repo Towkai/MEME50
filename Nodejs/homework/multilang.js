@@ -19,20 +19,20 @@ const employ_en  = {
     title: "title"
 }
 const employ_cht = {
-    empno: "員編：",
-    ename: "姓名：",
-    hiredate: "到職日：",
-    salary: "薪資：",
-    deptno: "部編：",
-    title: "職稱："
+    empno: "員編",
+    ename: "姓名",
+    hiredate: "到職日",
+    salary: "薪資",
+    deptno: "部編",
+    title: "職稱"
 }
 const employ_chs = {
-    empno: "员编：",
-    ename: "姓名：",
-    hiredate: "到职日：",
-    salary: "薪资：",
-    deptno: "部编：",
-    title: "职称："
+    empno: "员编",
+    ename: "姓名",
+    hiredate: "到职日",
+    salary: "薪资",
+    deptno: "部编",
+    title: "职称"
 }
 exports.employ = {
     empno: 0,
