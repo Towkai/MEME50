@@ -25,7 +25,7 @@ exports.view_insert = (req, res) => {
     let text = multilang.getCurrentLang(req.headers['accept-language']);
     res.render(ejs_file, {  //固定用法：建立名為"views"的資料夾，將"insert.ejs"放在裡面
         status:'',
-        caption: text.caption,
+        caption: text.caption.insert,
         text: text.content,
         employ_value: employ
     });

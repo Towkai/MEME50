@@ -44,9 +44,9 @@ exports.employ = {
 }
 exports.employ_text = {
     empty: {caption: '', content: employ_empty},
-    "en": {caption: 'insert', insert_status: {failed: {incomplete: 'data incomplete', repeat: 'empno repeat'},success: 'success'}, content: employ_en},
-    "zh-CN": {caption: '新增员工', insert_status: {failed: {incomplete: '资料不齐', repeat: '已有此员编'},success: '新增成功'}, content: employ_chs},
-    "zh-TW": {caption: '新增員工', insert_status: {failed: {incomplete: '資料不齊', repeat: '已有此員編'},success: '新增成功'}, content: employ_cht}
+    "en": {caption: {insert: 'insert', search: 'search'}, status: {insert: {failed: {incomplete: 'data incomplete', repeat: 'empno repeat'},success: 'success'}}, content: employ_en},
+    "zh-CN": {caption: {insert: '新增员工', search: '搜索'}, status: {insert: {failed: {incomplete: '资料不齐', repeat: '已有此员编'},success: '新增成功'}}, content: employ_chs},
+    "zh-TW": {caption: {insert: '新增員工', search: '搜尋'}, status: {insert: {failed: {incomplete: '資料不齊', repeat: '已有此員編'},success: '新增成功'}}, content: employ_cht}
 }
 exports.getCurrentLang = function(acceptlang) {    //尋找多國語言
     let acceptlang_split1 = acceptlang.split(';');

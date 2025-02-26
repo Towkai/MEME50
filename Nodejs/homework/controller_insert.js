@@ -12,7 +12,7 @@ exports.view_insert = (req, res) => {
     let text = multilang.getCurrentLang(req.headers['accept-language']);
     res.render('insert.ejs', {  //固定用法：建立名為"views"的資料夾，將"insert.ejs"放在裡面
         status:'',
-        caption: text.caption,
+        caption: text.caption.insert,
         text: text.content,
         employ_value: employ
     });
@@ -22,13 +22,13 @@ exports.feature_insert = (req, res) => {
     let text = multilang.getCurrentLang(req.headers['accept-language']);
     
     if (!body.empno || !body.ename || !body.hiredate || !body.salary || !body.deptno || !body.title) {
-        res.send(text.insert_status.failed.incomplete);
+        res.send(text.status.insert.failed.incomplete);
         return;
     }
 
     for (let i = 0; i < json.length; i++) {
         if (json[i].empno == body.empno) {
-            res.send(text.insert_status.failed.repeat);
+            res.send(text.status.insert.failed.repeat);
             return;
         }
     }
@@ -42,5 +42,5 @@ exports.feature_insert = (req, res) => {
         if (err) throw err;
     });
     
-    res.send(text.insert_status.success);
+    res.send(text.status.insert.success);
 };
