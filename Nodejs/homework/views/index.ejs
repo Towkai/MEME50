@@ -1,32 +1,29 @@
-<!DOCTYPE html>
-<html lang="zh-tw">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <table border="1">
-        <tr>
-            <th>
-                <%= text.empno %>
-            </th>
-            <th>
-                <%= text.ename %>
-            </th>
-            <th>
-                <%= text.hiredate %>
-            </th>
-            <th>
-                <%= text.salary %>
-            </th>
-            <th>
-                <%= text.deptno %>
-            </th>
-            <th>
-                <%= text.title %>
-            </th>
-        </tr>
-    </table>
-</body>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/public/css/style.css"></head>
+        <% get_data_id = (uuid, data_type, ui_type) => `${uuid}_${data_type}_${ui_type}` %>
+    </head>
+    <body>
+        <form>
+            <table border="1" class="emp">
+                <tr>
+                    <% data_type_arr = Object.keys(data_type) %>
+                    <% for (let i = 0; i < data_type_arr.length; i++) { %>
+                        <th class="emp <%= data_type_arr[i] == 'uuid' ? 'hide' : '' %>"><%= content[data_type_arr[i]] %></th>
+                    <% } %>
+                </tr>
+                <% for (let i = 0; i < data.length; i++) { %>
+                    <tr>
+                        <% for (let j = 0; j < data_type_arr.length; j++) { %>
+                            <td class="emp_data <%= data_type_arr[j] == 'uuid' ? 'hide' : '' %>">
+                                <label ondblclick="onenter_edit('<%= get_data_id(data[i].uuid, data_type_arr[j], `text`) %>', '<%= get_data_id(data[i].uuid, data_type_arr[j], `inputfield`) %>')" id="<%= get_data_id(data[i]['uuid'], data_type_arr[j], 'text') %>" for="<%= data[i]['uuid'] %>"><%= data[i][data_type_arr[j]] %></label>
+                                <input id="<%= get_data_id(data[i]['uuid'], data_type_arr[j], 'inputfield') %>" class="emp_data hide" type="<%= data_type[data_type_arr[j]] %>" name="<%= data[i]['uuid'] %>" value="<%= data[i][data_type_arr[j]] %>">
+                            </td>
+                        <% } %>
+                    </tr>
+                <% } %>
+            </table>
+        </form>
+        <script src="/public/js/edit.js"></script>
+    </body>
 </html>

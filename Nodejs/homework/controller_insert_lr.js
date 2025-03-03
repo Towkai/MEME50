@@ -24,7 +24,7 @@ exports.view_insert = (req, res) => {
     employ.hiredate = new Date().toLocaleDateString('en-CA', {timeZone: 'Asia/Taipei', hour12: false });
     let text = multilang.getCurrentLang(req.headers['accept-language']);
     res.render(ejs_file, {  //固定用法：建立名為"views"的資料夾，將"insert.ejs"放在裡面
-        input_type: multilang.employ.type,
+        data_type: multilang.employ.type,
         status:'',
         caption: text.caption.insert,
         text: text.content,

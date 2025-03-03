@@ -16,24 +16,6 @@ const status = {
         chs: {failed: {incomplete: '资料不齐', repeat: '已有此员编'},success: '新增成功'}
     }
 }
-exports.employ = {
-    enum: {
-        empno: 0,
-        ename: 1,
-        hiredate: 2,
-        salary: 3,
-        deptno: 4,
-        title: 5
-    },
-    type: {
-        empno: "text",
-        ename: "text",
-        hiredate: "date",
-        salary: "number",
-        deptno: "text",
-        title: "text"
-    }
-}
 exports.employ_text = {
     empty: {caption: '', content: content.empty},
     "en": {caption: caption.en, status: {insert: status.insert.en}, content: content.en},
