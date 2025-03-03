@@ -4,44 +4,54 @@
     </head>
     <body>
         <form method="post" action="http://localhost:8181/nodejs_homework/search">
-            <table border="1">
+            <table>
                 <tbody>
                     <thead>
                         <%= caption %>
-                        TODO: 新增聯集、交集搜尋
-                        <input type="radio" name="search_type" 交集>⋂
-                        <input type="radio" name="search_type" 聯集>∪
+                        <!-- TODO: 新增聯集、交集搜尋
+                        <input type="radio" name="search_type" id="intersection" value="intersection" checked 交集 >⋂
+                        <input type="radio" name="search_type" id="Union" value="union" 聯集>∪ 
+                        -->
                     </thead>
                     <% optionkeys_arr = Object.keys(options) %>
                     <% for (let i = 0; i < optionkeys_arr.length; i++) { %>
                         <tr>
-                            <th>
-                                <%= options[optionkeys_arr[i]] %>
-                            </th>
                             <td>
-                                <input class="input_field" type="<%= input_type[optionkeys_arr[i]] %>" name="<%= optionkeys_arr[i] %>">
+                                <%= options[optionkeys_arr[i]] %>：
+                            </td>
+                            <td>
+                                <input class="input_field" type="<%= data_type[optionkeys_arr[i]] %>" name="<%= optionkeys_arr[i] %>" value="<%= input_value[optionkeys_arr[i]] %>">
                             </td>
                         </tr>
                     <% } %>
-                    <!--
-                    <tr>
-                        <th>
-                            <select id="searchby" name="searchby" onchange="on_searchby_change()">
-                                <% for (let i = 0; i < Object.keys(options).length; i++) { %>
-                                    <option value="<%= options[Object.keys(options)[i]] %>" <%= Object.keys(options)[i] == selected ? 'selected' : '' %>><%= options[Object.keys(options)[i]] %></option>
-                                <% } %>
-                            </select>
-                        </th>
-                        <td>
-                            <input class="input_field" id="input_field" type="text" name="searchby">
-                        </td>
-                    </tr>
-                    -->
+
                     <% for (let i = 0; i < result?.length; i++) { %>
                     <% } %>
                 </tbody>
             </table>
             <input type="submit" />
         </form>
+
+        <% if ( result.length > 0) { %>
+            <table border="1" class="emp">
+                <tr>
+                    <% for (let i = 0; i < optionkeys_arr.length; i++) { %>
+                    <th>
+                        <%= options[optionkeys_arr[i]] %>
+                    </th>
+                    <% } %>
+                </tr>
+
+                <% for (let i = 0; i < result.length; i++) { %>
+                <tr>
+                    <% for (let j = 0; j < optionkeys_arr.length; j++) { %>
+                    <td class="emp">
+                        <%= result[i][optionkeys_arr[j]] %>
+                    </td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>
+        <% } %>
     </body>
 </html>
