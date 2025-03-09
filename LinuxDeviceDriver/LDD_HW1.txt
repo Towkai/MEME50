@@ -1,0 +1,55 @@
+課堂練習 1: Kernel Module
+請撰寫一個kernel module
+在module載入到Linux kernel時，可透過進入點載入輸出"MEME5001 Hello world"訊息於syslog中。
+在module移除時輸出"MEME5001 Bye"訊息於syslog中。
+內含一個 Makefile，在輸入 make -C /lib/modules/`uname -r`/build M=`pwd` modules 可編譯 module
+內含一個 Makefile，在輸入 make -C /lib/modules/`uname -r`/build M=`pwd` clean 可清除編譯 module過程的中間產物
+
+Note: MEME5001 是您在這班的學號，請參考底下 MEME50 members 列表，使用自己的學號。
+
+繳交方式請將整個目錄tar起來於 3/15 前上傳 
+
+    Google Drive:
+    https://drive.google.com/drive/folders/1deNzbLxpzUVBAG4p1TRchoi50HF5Pa7-?usp=sharing
+
+    e.g.
+    # mv hello MEME5001_hw1
+    # tar -czvf MEME5001_hw1.tar.gz MEME5001_hw1
+
+
+邵柔榛 MEME5001
+楊崇甫 MEME5002
+吳秉誠 MEME5003
+胡詠銓 MEME5004
+郭乃瑋 MEME5005
+吳宗諭 MEME5006
+李益昇 MEME5007
+林育麒 MEME5008
+關毓飛 MEME5009
+楊絜甯 MEME5010
+梁鴻文 MEME5011
+黃秋樺 MEME5013
+楊宗翰 MEME5014
+紀泓昇 MEME5015
+廖柏傑 MEME5016
+周昱辰 MEME5017
+韋清元 MEME5018
+張傑婷 MEME5019
+張晉榮 MEME5020
+蔡信宏 MEME5021
+陳漢昇 MEME5022
+林以勒 MEME5023
+李承軒 MEME5024
+劉馨嬨 MEME5025
+呂冠賢 MEME5026
+黃士芳 MEME5027
+陳威之 MEME5029
+吳宇恆 MEME5030
+張翔順 MEME5031
+余晏屏 MEME5032
+李政軒 MEME5033
+吳映萱 MEME5034
+
+
+
+
