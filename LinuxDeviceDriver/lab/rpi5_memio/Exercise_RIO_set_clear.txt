@@ -1,0 +1,9 @@
+1. 若 LED 改為 GPIO4 控制，實體線路及程式碼應該如何修改呢?
+
+2. 改用 rioSET->Out 及 rioCLR->Out 交替控制 GPIO output 的 on/off
+
+這個例子透過 rioXOR->Out 來控制第 pin 的腳位交替的on/off，若把這個XOR運算改為使用  rioSET->Out 及 rioCLR->Out 交替控制 GPIO output 的 on/off，應該如何修改程式呢?
+
+ for (;;)    {
+	rioXOR->Out = 1<<pin; 	sleep(1);
+    }
