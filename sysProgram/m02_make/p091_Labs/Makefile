@@ -1,5 +1,3 @@
-all: hello
-
 hello: hello.o hello_func.o
 	gcc -o hello hello.o hello_func.o
 hello.o: hello.c  hello_api.h
