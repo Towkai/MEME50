@@ -3,6 +3,6 @@
 
 int main(int argc, char *argv[]) {
     int num;
-    scanf("%d", num);
-    printf("總數為: %d", num);
+    scanf("%d", &num);
+    printf("總數為: %d\n", num);
 }
