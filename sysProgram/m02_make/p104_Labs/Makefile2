@@ -1,0 +1,13 @@
+#Makefile2
+CC = gcc #指定編譯器
+INCLUDE = ./ #檔案來源
+CFLAGS = -I # [開發使用] -g: debug資訊 -Wall 顯示所有警告訊息 -ansi使用標準C語法
+# CFLAGS = -O -Wall -ansi # [發布使用]
+
+hellomake: hellomake.o hellofunc.o
+	$(CC) -o hellomake hellomake.o hellofunc.o
+hellomake.o: hellomake.c  hellomake.h
+	$(CC) $(CFLAGS) $(INCLUDE) -c hellomake.c
+hellofunc.o: hellofunc.c hellomake.h
+	$(CC) $(CFLAGS) $(INCLUDE) -c hellofunc.c
+

@@ -1,0 +1,16 @@
+#Makefile2
+all: myapp
+CC = gcc #指定編譯器
+INCLUDE = ./ #檔案來源
+CFLAGS = -g -Wall -ansi # [開發使用] -g: debug資訊 -Wall 顯示所有警告訊息 -ansi使用標準C語法
+# CFLAGS = -O -Wall -ansi # [發布使用]
+
+myapp: main.o 2.o 3.o
+	$(CC) -o myapp main.o 2.o 3.o
+# -c 只編譯不連結
+main.o: main.c a.h
+	$(CC) -I $(INCLUDE) $(CFLAGS) -c main.c
+2.o: 2.c a.h b.h
+	$(CC) -I $(INCLUDE) $(CFLAGS) -c 2.c
+3.o: 3.c b.h c.h
+	$(CC) -I $(INCLUDE) $(CFLAGS) -c 3.c
