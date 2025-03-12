@@ -11,3 +11,5 @@ hellomake.o: hellomake.c  hellomake.h
 hellofunc.o: hellofunc.c hellomake.h
 	$(CC) $(CFLAGS) $(INCLUDE) -c hellofunc.c
 
+clean:
+	rm *.o hellomake

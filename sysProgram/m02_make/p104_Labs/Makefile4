@@ -1,0 +1,16 @@
+#Makefile3
+CC = gcc #指定編譯器
+INCLUDE = ./ #檔案來源
+CFLAGS = -I # [開發使用] -g: debug資訊 -Wall 顯示所有警告訊息 -ansi使用標準C語法
+DEPS = hellomake.h
+# CFLAGS = -O -Wall -ansi # [發布使用]
+
+OBJ = hellomake.o hellofunc.o
+all: hellomake
+hellomake: $(OBJ)
+	$(CC) -o hellomake $(OBJ)
+$(OBJ): %.o: %.c $(DEPS)
+	$(CC) -c $(CFLAGS) $(INCLUDE) $< -o $@
+
+clean:
+	rm *.o hellomake
