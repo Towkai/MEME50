@@ -1,0 +1,62 @@
+課堂練習 2: Register/Unregister character device driver
+
+1. 請使用register_chrdev()註冊, 註冊內容包含: (20)
+
+    major number: 201, (若您的學號為MEME5001)
+    name: "MEME5001"
+    fops: 需包含 open, read, write, close
+
+2. 預設有一個module parameter, myID, 此參數的型態為string (20)
+
+    char myID[]="MEME5001";
+    MODULE_PARM_DESC(myID, “My ID in iSpan\n");
+
+3. fops的註冊函式, 內含下列 dev_open, dev_close, dev_read and dev_write 註冊的函式 (40)
+3.1. 當user process open時, 初始化 myID初值
+3.2. 當user process read時, 可取得 myID的內容
+    #cat /dev/hello
+    MEME5001
+3.3. 當user process write時, 可修改myID值
+    #echo -n "MEME5011" > /dev/hello
+    MEME5011
+
+4. 上傳檔案格式: MEMExxxx_hw2.tar.gz 上傳 (20)
+    請於 3/16 前上傳
+    Google Drive
+    https://drive.google.com/drive/folders/16D2dfqnHQEANT4FUiut1mjBrLrkuByCd?usp=sharing
+
+    打包前, 請先make clean, 再用底下方式打包成 .tar.gz
+    打包指令: tar -czvf MEMExxxx_hw2.tar.gz MEMExxxx_hw2
+
+邵柔榛 MEME5001
+楊崇甫 MEME5002
+吳秉誠 MEME5003
+胡詠銓 MEME5004
+郭乃瑋 MEME5005
+吳宗諭 MEME5006
+李益昇 MEME5007
+林育麒 MEME5008
+關毓飛 MEME5009
+楊絜甯 MEME5010
+梁鴻文 MEME5011
+黃秋樺 MEME5013
+楊宗翰 MEME5014
+紀泓昇 MEME5015
+廖柏傑 MEME5016
+周昱辰 MEME5017
+韋清元 MEME5018
+張傑婷 MEME5019
+張晉榮 MEME5020
+蔡信宏 MEME5021
+陳漢昇 MEME5022
+林以勒 MEME5023
+李承軒 MEME5024
+劉馨嬨 MEME5025
+呂冠賢 MEME5026
+黃士芳 MEME5027
+陳威之 MEME5029
+吳宇恆 MEME5030
+張翔順 MEME5031
+余晏屏 MEME5032
+李政軒 MEME5033
+吳映萱 MEME5034
