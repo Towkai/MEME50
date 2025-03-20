@@ -1,10 +1,17 @@
 #include"menu.h"
 
 /**
- * 輸入包含Enter
+ * 如果標準輸出不是螢幕，印出錯誤
  */
 int main(void) {
     int choice = 0;
+
+    ///--- 如果輸出被重導。印出錯誤並退出
+    if (!isatty(fileno(stdout))) {
+        fprintf(stderr, "You are not a terminal!\n");
+        exit(1);
+    }
+    ///---
 
     do {
         choice = getchoice("Please select an action", menu);
